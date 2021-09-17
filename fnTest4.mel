@@ -1,0 +1,21 @@
+# Test some array code.
+
+fn testArray() : boolean
+	var len : integer <- 5;
+	var a : array [len] of integer;
+	var i : integer <- 0;
+  var x : integer;
+
+	while i < len then
+		a[ i ] <- i;
+		i <- i + 1;
+	end
+
+  x <- a[ i - 1 ];
+  
+end
+
+fn main( args : array [] of string ) : integer
+	testArray();
+	return 0;
+end

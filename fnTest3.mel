@@ -1,0 +1,14 @@
+# Test method with multiple arguments
+
+fn tester( x : integer, y : integer ) : integer
+	var temp : integer;
+
+	temp <- x + y;
+
+	return temp;
+end
+
+fn main( args : array [] of string ) : integer
+	print( tester( 2, 3 ) );
+	return 0;
+end

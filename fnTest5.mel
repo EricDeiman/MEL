@@ -1,0 +1,16 @@
+fn tester() : integer
+   var x : integer <- 1;
+   var y : integer <- 2;
+
+   if x = 1 && y = 2 || x + y = 3 then
+      print( "Variables as expected." );
+   else
+      print( "Something is wrong with the variables!" );
+   end
+
+   return 0;
+end
+
+fn main( args : array[] of string ) : integer
+   return tester();
+end

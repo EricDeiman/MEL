@@ -1,0 +1,82 @@
+binop(lhs, op, rhs) ::= "(<op> <lhs> <rhs>)"
+varFormat(var, type) ::= "(<var>:<type>)"
+formalFormat(formal) ::= "<formal;separator=\" \">"
+printStmnt(e) ::= "(print <e>)"
+assignStmnt(id, value) ::= "(assign <id> <value>)"
+arrayAssignStmnt(id, index, value) ::= "(assign <id> <index> <value>)"
+lengthExp(obj) ::= "(length <obj>)"
+funcCall(function, params) ::= "(call <function> <params>)"
+arrayLookup(obj, index) ::= "(lookup <obj> <index>)"
+notExp(e) ::= "(not <e>)"
+newArray(type, size) ::= "(create-array-<type> <size>)"
+idType(id, type) ::= "<id>:<type>"
+
+//------------------------------------------
+statementList(stmnt) ::=
+<<<if(stmnt)><stmnt; separator="
+"><endif> >>
+
+//----------------------------------------
+varStmnt(idType,expr) ::=
+<<(define <idType> <if(expr)>(<expr>)<endif>)>>
+
+//----------------------------------------
+compUnit(main, functions) ::= <<(compUnit
+<main>
+<functions; separator="
+">
+)
+
+>>
+
+//---------------------------------------
+mainDecl(arg, body) ::= <<
+(define main:integer (<arg>:string[])
+(<if(body)><body>
+<endif>
+)
+)
+
+>>
+
+//-----------------------------------------
+funcDecl(id, formals, type, stmnts) ::=
+<<(define <id>:<type> (<formals>)
+(<if(stmnts)><stmnts>
+<endif>
+)
+)
+
+>>
+
+//-------------------------------------------
+block(varDecl, stmnt) ::=
+<<
+(block
+<varDecl>
+<stmnt>
+)
+>>
+
+//------------------------------------------
+ifStmnt(cond, cons, alt) ::=
+<<
+(if (<cond>)
+<cons>
+<if(alt)><alt><endif>
+)
+>>
+
+//--------------------------------------------
+returnStmnt(exp) ::=
+<<
+(return <if(exp)><exp><endif>)
+>>
+
+//--------------------------------------------
+whileStmnt(cond, stmnts) ::=
+<<
+(while (<cond>)
+<if(stmnts)><stmnts><endif>
+)
+>>

@@ -1,0 +1,13 @@
+# Test for the while loop
+
+fn main ( a : array [] of string ) : integer
+	while true then
+		if( 1 < 2 ) then
+			break;
+		else
+			continue;
+		end
+	end	
+
+	return 0;
+end

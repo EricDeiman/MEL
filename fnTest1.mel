@@ -1,0 +1,14 @@
+# The traditional factorial function
+fn fact ( x : integer ) : integer
+	if x < 2 then # Could just as well have been if x = 1 ....
+		return 1;
+	else
+		return x * fact( x - 1 );
+	end
+end
+
+fn main ( a : array [] of string ) : integer
+	var msg : string <- "Fact(5) = ";
+	print( msg );
+	print( fact( 5 ) );
+end
